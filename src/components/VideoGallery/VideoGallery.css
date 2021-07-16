@@ -1,0 +1,8 @@
+.video-gallery {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: calc(var(--width) * var(--cols));
+}
