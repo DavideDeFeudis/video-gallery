@@ -46,7 +46,7 @@ interface Props {
 export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, padding }) => {
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
-    const [childStyle, setChildStyle] = useState({});
+    const [tileStyle, setTileStyle] = useState({});
     const innerBoxRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     const outerBoxRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     const childrenCount = React.Children.count(children);
@@ -63,12 +63,12 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, paddi
         innerBoxRef.current.style.setProperty("--cols", cols + "");
         outerBoxRef.current.style.padding = `${padding}`;
 
-        setChildStyle({
+        setTileStyle({
             width: `${tileWidth}px`,
             height: `${tileHeight}px`,
             padding: `${padding}`,
         });
-    }, [width, height, childrenCount, tileAspectRatio, children, padding]);
+    }, [width, height, childrenCount, tileAspectRatio, padding]);
 
     const createResizeObserver = () => {
         return new ResizeObserver((entries) => {
@@ -82,7 +82,7 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, paddi
         <div className="outer-box" ref={outerBoxRef}>
             <div className="inner-box" ref={innerBoxRef}>
                 {children.map((child: React.ReactChild, i: number) => (
-                    <div className="child-wrapper" key={i} style={childStyle}>
+                    <div key={i} style={tileStyle}>
                         {child}
                     </div>
                 ))}
