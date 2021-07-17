@@ -1,8 +1,19 @@
+.wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(34, 34, 34);
+}
+
 .video-gallery {
-    height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
     max-width: calc(var(--width) * var(--cols));
+    background-color: rgb(48, 48, 48);
+}
+
+.child {
+    background-color: rgb(74, 74, 74);
 }
