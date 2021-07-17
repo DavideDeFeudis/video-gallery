@@ -40,10 +40,10 @@ const calculateLayout = (containerWidth: number, containerHeight: number, tileCo
 interface Props {
     children: any;
     tileAspectRatio: number;
-    tilePadding: string;
+    padding: string;
 }
 
-export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, tilePadding }) => {
+export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, padding }) => {
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     const [childStyle, setChildStyle] = useState({});
@@ -61,13 +61,14 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, tileP
         const { width: tileWidth, height: tileHeight, cols } = calculateLayout(width, height, childrenCount, tileAspectRatio);
         galleryRef.current.style.setProperty("--width", tileWidth + "px");
         galleryRef.current.style.setProperty("--cols", cols + "");
+        wrapperRef.current.style.padding = `${padding}`;
 
         setChildStyle({
             width: `${tileWidth}px`,
             height: `${tileHeight}px`,
-            padding: `${tilePadding}`,
+            padding: `${padding}`,
         });
-    }, [width, height, childrenCount, tileAspectRatio, children, tilePadding]);
+    }, [width, height, childrenCount, tileAspectRatio, children, padding]);
 
     const createResizeObserver = () => {
         return new ResizeObserver((entries) => {
