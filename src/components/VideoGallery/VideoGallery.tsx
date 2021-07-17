@@ -43,10 +43,16 @@ interface Props {
     padding: string;
 }
 
+interface TileStyle {
+    width?: string;
+    height?: string;
+    padding?: string;
+}
+
 export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, padding }) => {
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
-    const [tileStyle, setTileStyle] = useState({});
+    const [tileStyle, setTileStyle] = useState<TileStyle>({});
     const innerBoxRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     const outerBoxRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     const childrenCount = React.Children.count(children);
