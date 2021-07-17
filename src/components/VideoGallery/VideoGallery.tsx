@@ -59,10 +59,6 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, tileP
 
     useLayoutEffect(() => {
         const { width: tileWidth, height: tileHeight, cols } = calculateLayout(width, height, childrenCount, tileAspectRatio);
-        console.log("childrenCount:", childrenCount);
-        console.log("tileWidth:", tileWidth);
-        console.log("tileHeight:", tileHeight);
-        console.log("cols:", cols);
         galleryRef.current.style.setProperty("--width", tileWidth + "px");
         galleryRef.current.style.setProperty("--cols", cols + "");
 
@@ -85,7 +81,7 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, tileP
         <div className="wrapper" ref={wrapperRef}>
             <div className="video-gallery" ref={galleryRef}>
                 {children.map((child: React.ReactChild, i: number) => (
-                    <div className="child" key={i} style={childStyle}>
+                    <div className="child-wrapper" key={i} style={childStyle}>
                         {child}
                     </div>
                 ))}
