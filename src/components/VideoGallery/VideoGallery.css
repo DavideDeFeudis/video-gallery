@@ -1,11 +1,11 @@
-.wrapper {
+.outer-box {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.video-gallery {
+.inner-box {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

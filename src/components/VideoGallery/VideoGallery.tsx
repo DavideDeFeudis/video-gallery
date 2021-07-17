@@ -47,21 +47,21 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, paddi
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     const [childStyle, setChildStyle] = useState({});
-    const galleryRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-    const wrapperRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+    const innerBoxRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+    const outerBoxRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     const childrenCount = React.Children.count(children);
 
     useEffect(() => {
         const observer = createResizeObserver();
-        observer.observe(wrapperRef.current);
+        observer.observe(outerBoxRef.current);
         return () => observer.disconnect();
     }, []);
 
     useLayoutEffect(() => {
         const { width: tileWidth, height: tileHeight, cols } = calculateLayout(width, height, childrenCount, tileAspectRatio);
-        galleryRef.current.style.setProperty("--width", tileWidth + "px");
-        galleryRef.current.style.setProperty("--cols", cols + "");
-        wrapperRef.current.style.padding = `${padding}`;
+        innerBoxRef.current.style.setProperty("--width", tileWidth + "px");
+        innerBoxRef.current.style.setProperty("--cols", cols + "");
+        outerBoxRef.current.style.padding = `${padding}`;
 
         setChildStyle({
             width: `${tileWidth}px`,
@@ -79,8 +79,8 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, paddi
     };
 
     return (
-        <div className="wrapper" ref={wrapperRef}>
-            <div className="video-gallery" ref={galleryRef}>
+        <div className="outer-box" ref={outerBoxRef}>
+            <div className="inner-box" ref={innerBoxRef}>
                 {children.map((child: React.ReactChild, i: number) => (
                     <div className="child-wrapper" key={i} style={childStyle}>
                         {child}

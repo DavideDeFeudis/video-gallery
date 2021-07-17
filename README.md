@@ -14,10 +14,10 @@
 
 ## Props
 
-| Prop            | Type   | Description                                   |
-| --------------- | ------ | --------------------------------------------- |
-| tileAspectRatio | number | The aspect ratio assigned to the tiles        |
-| padding         | string | The padding assigned to the tiles and wrapper |
+| Prop            | Type   | Description                                     |
+| --------------- | ------ | ----------------------------------------------- |
+| tileAspectRatio | number | The aspect ratio assigned to the tiles          |
+| padding         | string | The padding assigned to the tiles and outer box |
 
 ## Credits
 
