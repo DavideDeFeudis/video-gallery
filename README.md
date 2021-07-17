@@ -21,7 +21,8 @@
 
 ## Credits
 
-[Dosant](https://github.com/Dosant)
+[Dosant](https://dev.to/antondosov/building-a-video-gallery-just-like-in-zoom-4mam) and
+[fzembow](https://github.com/fzembow/rect-scaler) for the layout calculation.
 
 ## License
 
