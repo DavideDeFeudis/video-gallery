@@ -93,20 +93,3 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, tileP
         </div>
     );
 };
-
-// React.Children.map(children, (child) => {
-//     return React.cloneElement(child, { style: { background: "blue" } });
-// });
-
-// for (let i = 0; i < children.length; i++) {
-//     const tile = children[i];
-//     tile.style.width = `${tileWidth}px`;
-//     tile.style.height = `${tileHeight}px`;
-//     tile.style.padding = `${tilePadding}`;
-// }
-
-// children?.forEach((tile) => {
-//     tile.style.width = `${tileWidth}px`;
-//     tile.style.height = `${tileHeight}px`;
-//     tile.style.padding = `${tilePadding}`;
-// });
