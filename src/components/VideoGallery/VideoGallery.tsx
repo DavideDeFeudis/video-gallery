@@ -53,8 +53,8 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio = 4 / 
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     const [tileStyle, setTileStyle] = useState<TileStyle>({});
-    const innerBoxRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-    const outerBoxRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+    const innerBoxRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+    const outerBoxRef = useRef() as React.MutableRefObject<HTMLDivElement>;
     const childrenCount = React.Children.count(children);
 
     useEffect(() => {
