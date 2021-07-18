@@ -38,7 +38,7 @@ const calculateLayout = (containerWidth: number, containerHeight: number, tileCo
 };
 
 interface Props {
-    children: any;
+    children: React.ReactChild[];
     tileAspectRatio?: number;
     padding?: string;
 }
@@ -49,7 +49,7 @@ interface TileStyle {
     padding?: string;
 }
 
-export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio = 4 / 3, padding = ".5rem" }) => {
+export const VideoGallery = ({ children, tileAspectRatio = 4 / 3, padding = ".5rem" }: Props): JSX.Element => {
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     const [tileStyle, setTileStyle] = useState<TileStyle>({});
