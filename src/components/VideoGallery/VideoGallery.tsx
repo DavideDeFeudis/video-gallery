@@ -84,11 +84,27 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, paddi
         });
     };
 
+    const handleTileClick = (e: React.MouseEvent<HTMLElement>, child: React.ReactChild) => {
+        // console.log(e.target);
+        // console.log(e.currentTarget);
+        // console.log(child);
+        // console.log(typeof child);
+        // console.log(children[0].props);
+        // console.log(children);
+        // console.log(React.Children.toArray(children));
+        // console.log(React.Children.toArray(children).filter((c) => c === child));
+        // console.log(children.filter((c: React.ReactChild) => c === child));
+        // const subRows = React.Children.toArray(this.props.children).filter((child, i) => {
+        //     return child.props.someProp;
+        // });
+    };
+
     return (
         <div className="outer-box" ref={outerBoxRef}>
             <div className="inner-box" ref={innerBoxRef}>
+                {/* try converting it to an array and then filtering it, maybe convert it to a map */}
                 {children.map((child: React.ReactChild, i: number) => (
-                    <div key={i} style={tileStyle}>
+                    <div key={i} style={tileStyle} onClick={(e) => handleTileClick(e, child)}>
                         {child}
                     </div>
                 ))}
