@@ -53,8 +53,8 @@ export const VideoGallery = ({ children, tileAspectRatio = 4 / 3, padding = ".5r
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     const [tileStyle, setTileStyle] = useState<TileStyle>({});
-    const innerBoxRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-    const outerBoxRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+    const innerBoxRef = useRef<HTMLDivElement>(null!);
+    const outerBoxRef = useRef<HTMLDivElement>(null!);
     const childrenCount = React.Children.count(children);
 
     useEffect(() => {
