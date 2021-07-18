@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: var(--padding);
 }
 
 .inner-box {
@@ -10,4 +11,8 @@
     justify-content: center;
     flex-wrap: wrap;
     max-width: calc(var(--width) * var(--cols));
+}
+
+.tile {
+    padding: var(--padding);
 }

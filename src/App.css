@@ -1,10 +1,30 @@
 .app {
     height: 100vh;
+    --spacer: 0.5rem;
+    --border-radius: 1rem;
 }
 
-video.child {
+video {
     width: 100%;
     height: 100%;
     background-color: black;
-    border-radius: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.button-group {
+    position: absolute;
+    display: grid;
+    gap: var(--spacer);
+    padding: var(--spacer);
+    z-index: 1;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+    background-color: rgb(181, 181, 181);
+    border-radius: var(--border-radius);
+    padding: var(--spacer) calc(var(--spacer) * 2);
+    font-size: 1.3rem;
 }

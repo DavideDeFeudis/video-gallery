@@ -39,8 +39,8 @@ const calculateLayout = (containerWidth: number, containerHeight: number, tileCo
 
 interface Props {
     children: any;
-    tileAspectRatio: number;
-    padding: string;
+    tileAspectRatio?: number;
+    padding?: string;
 }
 
 interface TileStyle {
@@ -49,7 +49,7 @@ interface TileStyle {
     padding?: string;
 }
 
-export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, padding }) => {
+export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio = 4 / 3, padding = ".5rem" }) => {
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
     const [tileStyle, setTileStyle] = useState<TileStyle>({});
@@ -63,18 +63,20 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, paddi
         return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        outerBoxRef.current.style.setProperty("--padding", padding);
+    }, [padding]);
+
     useLayoutEffect(() => {
         const { width: tileWidth, height: tileHeight, cols } = calculateLayout(width, height, childrenCount, tileAspectRatio);
         innerBoxRef.current.style.setProperty("--width", tileWidth + "px");
         innerBoxRef.current.style.setProperty("--cols", cols + "");
-        outerBoxRef.current.style.padding = `${padding}`;
 
         setTileStyle({
             width: `${tileWidth}px`,
             height: `${tileHeight}px`,
-            padding: `${padding}`,
         });
-    }, [width, height, childrenCount, tileAspectRatio, padding]);
+    }, [width, height, childrenCount, tileAspectRatio]);
 
     const createResizeObserver = () => {
         return new ResizeObserver((entries) => {
@@ -88,7 +90,7 @@ export const VideoGallery: React.FC<Props> = ({ children, tileAspectRatio, paddi
         <div className="outer-box" ref={outerBoxRef}>
             <div className="inner-box" ref={innerBoxRef}>
                 {children.map((child: React.ReactChild, i: number) => (
-                    <div key={i} style={tileStyle}>
+                    <div className="tile" key={i} style={tileStyle}>
                         {child}
                     </div>
                 ))}
